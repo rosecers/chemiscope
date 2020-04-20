@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>User tutorial &#8212; chemiscope 0.0 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/chemiscope.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chemiscope as a library" href="embedding.html" />
+    <link rel="prev" title="Chemiscope: interactive structure/property explorer for materials and molecules" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://chemiscope.org">
+        chemiscope</a>
+      <span class="navbar-text navbar-version pull-left"><b></b></span>
+    </div>
+
+      <div class="collapse navbar-collapse nav-collapse">
+        <ul class="nav navbar-nav">
+          
+              <li><a href="index.html">Documentation</a></li>
+          
+          
+            
+            
+          
+          
+            
+              
+  <li>
+    <a href="index.html" title="Previous Chapter: Chemiscope: interactive structure/property explorer for materials and molecules"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Chemiscope: i...</span>
+    </a>
+  </li>
+  <li>
+    <a href="embedding.html" title="Next Chapter: Chemiscope as a library"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Chemiscope as... &raquo;</span>
+    </a>
+  </li>
+            
+          
+          
+          
+          
+        </ul>
+
+        
+          
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-structural-properties">Introduction to structural properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#different-panels-and-settings">Different panels and settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-file-format-for-chemiscope">Input file format for chemiscope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-standalone-visualizer">Using the standalone visualizer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Chemiscope as a library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="embedding.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embedding.html#getting-and-building-the-code">Getting and building the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="embedding.html#usage-example">Usage example</a></li>
+</ul>
+</li>
+</ul>
+
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="user-tutorial">
+<h1>User tutorial<a class="headerlink" href="#user-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will present how to use the <a class="reference external" href="https://chemiscope.org">default chemiscope visualizer</a> with your own database: the different panels and related
+settings; as well as how to create an input file for it.</p>
+<div class="section" id="introduction-to-structural-properties">
+<h2>Introduction to structural properties<a class="headerlink" href="#introduction-to-structural-properties" title="Permalink to this headline">¶</a></h2>
+<p>Before we get started, we will introduce a few concepts used in chemiscope, and
+in particular how structural properties can be used to create a <em>“map”</em> of
+structures in 2D or 3D, in which similar structures are grouped together.
+Everything starts with  <strong>environments</strong>. Chemiscope can work with either
+full-structures environments or atom-centered environments. These environments
+are fully defined by the positions of all atoms in the structure or around a
+central atom. To be able to compare different environments, we use descriptors
+based for example on <a class="reference external" href="soap">atom density representation</a> or <a class="reference external" href="Behler-Parrinello">Behler-Parrinello
+symmetry functions</a>. These descriptors are usually
+high-dimensional vectors, hard to visualize and interpret. The next step is to
+use a dimensionality reduction algorithm, such as <a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a>, <a class="reference external" href="https://doi.org/10.1073/pnas.1108486108">sketch-map</a>, <em>etc.</em>
+The interpretation of the resulting map will differ depending on both the
+descriptor used to represent the environments and the dimensionality reduction
+algorithm.</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="_images/mol-to-map.svg"><img alt="_images/mol-to-map.svg" src="_images/mol-to-map.svg" width="65%" /></a>
+<p class="caption"><span class="caption-text">Illustration of the process used to create structural properties from a
+molecule.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Chemiscope is completly agnostic with respect to how structural properties are
+generated, and do not provide any facilities to generate such structural
+properties. In the rest of this document, we will refer to properties describing
+the structure of an environment as <em>structural properties</em>; and other properties
+associated with the environment (such as energy, density, …) as <em>physical
+properties</em>.</p>
+</div>
+<div class="section" id="different-panels-and-settings">
+<h2>Different panels and settings<a class="headerlink" href="#different-panels-and-settings" title="Permalink to this headline">¶</a></h2>
+<p>The default chemiscope visualizer is organized in three main panels: the map,
+the structure viewer and the environment information display. Additionally,
+clicking on the dataset title (on top of the map) will display some metadata
+about the dataset (description, authors, references). This section will
+present each one, as well as the main settings accessible to customize the
+display.</p>
+<p>The map is a 2D or 3D scatter plot showing properties for all the environments
+in the dataset. You can set which properties (structural or physical) should be
+used a the x, y, and potentially z axis; as well as for color and size of the
+points. Additionally, properties which have string values (an not numeric
+values) can be used as category data to set the symbols used for the points. To
+open the settings modal window, click on the hamburger menu (the ☰ symbol) on
+the left of the dataset title.</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="_images/map.png"><img alt="_images/map.png" src="_images/map.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">The map panel in 2D mode and the related settings</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>The structure panel is a 3D molecular viewer based on <a class="reference external" href="http://jmol.org">Jmol</a>. The settings are
+accessible through the hamburger menu (☰) on the right of the viewer. The
+settings are grouped into <strong>representation</strong> (how is the molecule rendered);
+<strong>supercell</strong> (how many copies of the unit cell to display); <strong>environments</strong>
+(how atom-centered environments are displayed); <strong>camera</strong> (reset the camera in
+along one of the given axis); and <strong>trajectory</strong> (playback related settings).</p>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="_images/structure.png"><img alt="_images/structure.png" src="_images/structure.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">The structure panel and related settings</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>Finally, the environments information panel features sliders and text input to
+allow for an easy selection of the environment of interest. The play button on
+the left of the sliders activates the trajectory playback, looping over the
+structures in the datasets or the atoms in a structure. By clicking on the
+labels at the top (<em>structure XXX</em> and*atom XXX*), one can hide or show the
+full property tables. These tables show all properties in the dataset for the
+currently selected environment.</p>
+<div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="_images/info.png"><img alt="_images/info.png" src="_images/info.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">The environment information panel fully expanded</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="input-file-format-for-chemiscope">
+<h2>Input file format for chemiscope<a class="headerlink" href="#input-file-format-for-chemiscope" title="Permalink to this headline">¶</a></h2>
+<p>When using the default chemiscope interface, all the structures and properties
+in a dataset are loaded from a single JSON file. This sections describe how to
+generate such JSON file, either using a pre-existing python script that does
+most of the work for you, or by writing the JSON file directly. Since the
+resulting JSON file can be quite large and thus harder to share with
+collaborators, the default chemiscope interface also allows to load JSON files
+compressed with gzip.</p>
+<div class="section" id="creating-an-input-file">
+<h3>Creating an input file<a class="headerlink" href="#creating-an-input-file" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to create a JSON input file is to use the <a class="reference external" href="https://github.com/cosmo-epfl/chemiscope/blob/master/utils/chemiscope_input.py">chemiscope_input</a>
+Python 3 script that lives inside chemiscope’s <a class="reference external" href="https://github.com/cosmo-epfl/chemiscope">github</a> repository. Download
+the script and place it somewhere it can be imported by Python. Then, in your
+own script, run the <code class="docutils literal notranslate"><span class="pre">write_chemiscope_input</span></code> function to generate the JSON
+file. This script assumes you use the <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/index.html">ase</a> Python module to read the
+structures.</p>
+<dl class="py function">
+<dt id="chemiscope_input.write_chemiscope_input">
+<code class="sig-prename descclassname">chemiscope_input.</code><code class="sig-name descname">write_chemiscope_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">meta</span></em>, <em class="sig-param"><span class="n">frames</span></em>, <em class="sig-param"><span class="n">extra</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cutoff</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemiscope_input.write_chemiscope_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the json file expected by the default chemiscope visualizer at
+<code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – name of the file to use to save the json data. If it
+ends with ‘.gz’, a gzip compressed file will be written</p></li>
+<li><p><strong>meta</strong> (<em>dict</em>) – metadata of the dataset, see below</p></li>
+<li><p><strong>frames</strong> (<em>list</em>) – list of <a class="reference external" href="https://wiki.fysik.dtu.dk/ase/ase/atoms.html">ase.Atoms</a> objects containing all the
+structures</p></li>
+<li><p><strong>extra</strong> (<em>dict</em>) – optional dictionary of additional properties, see below</p></li>
+<li><p><strong>cutoff</strong> (<em>float</em>) – optional. If present, will be used to generate
+atom-centered environments</p></li>
+</ul>
+</dd>
+</dl>
+<p>The dataset metadata should be given in the <code class="docutils literal notranslate"><span class="pre">meta</span></code> dictionary, the
+possible keys are:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>         <span class="c1"># str, dataset name</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>  <span class="c1"># str, dataset description</span>
+    <span class="s1">&#39;authors&#39;</span><span class="p">:</span> <span class="p">[</span>           <span class="c1"># list of str, dataset authors, OPTIONAL</span>
+        <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;references&#39;</span><span class="p">:</span> <span class="p">[</span>        <span class="c1"># list of str, references for this dataset,</span>
+        <span class="s1">&#39;...&#39;</span><span class="p">,</span>             <span class="c1"># OPTIONAL</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The written JSON file will contain all the properties defined on the
+<a class="reference external" href="https://wiki.fysik.dtu.dk/ase/ase/atoms.html">ase.Atoms</a> objects. Values in <code class="docutils literal notranslate"><span class="pre">ase.Atoms.arrays</span></code> are mapped to
+<code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">=</span> <span class="pre">&quot;atom&quot;</span></code> properties; while values in <code class="docutils literal notranslate"><span class="pre">ase.Atoms.info</span></code> are
+mapped to <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">=</span> <span class="pre">&quot;structure&quot;</span></code> properties.</p>
+<p>Additional properties can be added with the <code class="docutils literal notranslate"><span class="pre">extra</span></code> parameter. This
+parameter should be a dictionary containing one entry for each property.
+Each entry contains a <code class="docutils literal notranslate"><span class="pre">target</span></code> attribute (<code class="docutils literal notranslate"><span class="pre">'atom'</span></code> or <code class="docutils literal notranslate"><span class="pre">'structure'</span></code>)
+and a set of values. <code class="docutils literal notranslate"><span class="pre">values</span></code> can be a Python list of float or string; a
+1D numpy array of numeric values; or a 2D numpy array of numeric values. In
+the later case, multiple properties will be generated along the second axis.
+For example, passing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extra</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cheese&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="s1">&#39;atom&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>will generate four properties named <code class="docutils literal notranslate"><span class="pre">cheese[1]</span></code>, <code class="docutils literal notranslate"><span class="pre">cheese[2]</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cheese[3]</span></code>,  and <code class="docutils literal notranslate"><span class="pre">cheese[4]</span></code>, each containing 300 values.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="input-file-structure">
+<h3>Input file structure<a class="headerlink" href="#input-file-structure" title="Permalink to this headline">¶</a></h3>
+<p>If you can not or do not want to use the script mentionned above, you can also
+directly write the JSON file conforming to the schema described here. The input
+file follows closely the <a class="reference external" href="api/interfaces/main.dataset.html">Dataset</a> typescript interface used in the library.
+Using a pseudo-JSON format, the file should contains the following fields and
+values:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// metadata of the dataset. `description`, `authors` and `references`</span>
+    <span class="c1">// will be rendered as markdown.</span>
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// the name of the dataset</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;this is my name&quot;</span>
+        <span class="c1">// description of the dataset, OPTIONAL</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;This contains data from ...&quot;</span>
+        <span class="c1">// authors of the dataset, OPTIONAL</span>
+        <span class="s2">&quot;authors&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;Mr Green, green@example.com&quot;</span><span class="p">],</span>
+        <span class="c1">// references for the dataset, OPTIONAL</span>
+        <span class="s2">&quot;references&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;&#39;A new molecular construction&#39;, Journal of Random Words 19 (1923) pp 3333, DOI: 10.0000/0001100&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&#39;nice website&#39; http://example.com&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+
+    <span class="c1">// list of properties in this dataset</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// each property have a name, a target and some values</span>
+        <span class="o">&lt;</span><span class="nx">name</span><span class="o">&gt;:</span> <span class="p">{</span>
+            <span class="c1">// the property target: is it defined per atom or for the full</span>
+            <span class="c1">// structures</span>
+            <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;atom&quot;</span> <span class="o">|</span> <span class="s2">&quot;structure&quot;</span><span class="p">,</span>
+            <span class="c1">// values of the properties can either be numbers or strings.</span>
+            <span class="c1">// string properties are assumed to represent categories of</span>
+            <span class="c1">// data.</span>
+            <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">...]</span> <span class="o">|</span> <span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="p">...]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// list of structures in this dataset</span>
+    <span class="s2">&quot;structures&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="c1">// number of atoms in the structure</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">42</span><span class="p">,</span>
+            <span class="c1">// names of the atoms in the structure</span>
+            <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="p">...],</span>
+            <span class="c1">// x cartesian coordinate of all the atoms, in Angstroms</span>
+            <span class="s2">&quot;x&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="p">...],</span>
+            <span class="c1">// y cartesian coordinate of all the atoms, in Angstroms</span>
+            <span class="s2">&quot;y&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">5.7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="p">...],</span>
+            <span class="c1">// z cartesian coordinate of all the atoms, in Angstroms</span>
+            <span class="s2">&quot;z&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">8.1</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">,</span> <span class="p">...],</span>
+            <span class="c1">// OPTIONAL: unit cell of the system, if any.</span>
+            <span class="c1">//</span>
+            <span class="c1">// This should be given as [ax ay az bx by bz cx cy cz], where</span>
+            <span class="c1">// a, b, and c are the unit cell vectors. All values are</span>
+            <span class="c1">// expressed in Angstroms.</span>
+            <span class="s2">&quot;cell&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="p">},</span>
+        <span class="c1">// other structures as needed</span>
+        <span class="p">...</span>
+    <span class="p">],</span>
+
+    <span class="c1">// OPTIONAL: atom-centered environments descrptions</span>
+    <span class="c1">//</span>
+    <span class="c1">// If present, there should be one environment for each atom in each</span>
+    <span class="c1">// structure.</span>
+    <span class="s2">&quot;environments&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="c1">// index of the structure in the above structures list</span>
+            <span class="s2">&quot;structure&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="c1">// index of the central atom in structures</span>
+            <span class="s2">&quot;center&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="c1">// spherical cutoff radius, expressed in Angstroms</span>
+            <span class="s2">&quot;cutoff&quot;</span><span class="o">:</span> <span class="mf">3.5</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="c1">// more environments</span>
+        <span class="p">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-the-standalone-visualizer">
+<h2>Using the standalone visualizer<a class="headerlink" href="#using-the-standalone-visualizer" title="Permalink to this headline">¶</a></h2>
+<p>The default chemiscope interface lives online, at <a class="reference external" href="https://chemiscope.org/">https://chemiscope.org/</a>. But
+there are some cases where you do not want to use an online tool for your own
+dataset, such as scientific article supplementation information. For these use
+cases, a standalone, mostly offline visualizer exists that uses the same input
+file format as the default interface.</p>
+<p>To create a standalone visualizer with your own dataset, please follow the steps
+below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/cosmo-epfl/chemiscope
+<span class="nb">cd</span> chemiscope
+npm install
+npm run build
+python3 ./utils/generate_standalone.py
+</pre></div>
+</div>
+<p>This will create a <code class="docutils literal notranslate"><span class="pre">standalone.html</span></code> file containing all the required HTML and
+javascript. You can then add your own dataset by adding the corresponding JSON
+file at the end of the <code class="docutils literal notranslate"><span class="pre">standalone.html</span></code> file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat standalone.html my-dataset.json &gt; my-dataset.html
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2020, Guillaume Fraux.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
